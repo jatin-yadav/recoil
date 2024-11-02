@@ -1,12 +1,14 @@
-/* eslint-disable react/display-name */
 import "./App.css";
 import { RecoilRoot, useRecoilValue, useSetRecoilState } from "recoil";
 import { counterAtom } from "../src/store/atoms/counterAtom";
-import { memo } from "react";
+import NavBar from "./NavBar";
+import Todos from "./Todos";
 
 function App() {
   return (
     <RecoilRoot>
+      <Todos />
+      <NavBar />
       <Counter1 />
       <Counter2 />
     </RecoilRoot>
@@ -43,12 +45,12 @@ function Decrease() {
   );
 }
 
-const Incrase = memo(function () {
+function Incrase() {
   const setCount = useSetRecoilState(counterAtom);
   return (
     <button onClick={() => setCount((count) => count + 1)}>Increase</button>
   );
-});
+}
 
 function Value() {
   const countValue = useRecoilValue(counterAtom);
